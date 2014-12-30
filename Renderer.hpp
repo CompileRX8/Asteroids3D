@@ -31,7 +31,7 @@ public:
 
     void nextFrame(const Real now);
 
-    void resize(unsigned int w, unsigned int h);
+    void resize(const int w, const int h);
 
     void updateScore(const unsigned int score);
 

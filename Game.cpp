@@ -33,7 +33,7 @@ void Game::createObjects() {
     }
 }
 
-void Game::updateObjects(Real now, Real lastMoveTime) {
+void Game::updateObjects(const Real now, const Real lastMoveTime) {
     for (auto iter = std::begin(asteroids); iter != std::end(asteroids); iter++) {
         (*iter)->move(now - lastMoveTime);
     }
@@ -51,12 +51,12 @@ void Game::updateRenderer() {
     renderer.updateScore(score);
     renderer.updateHighScore(highScoreInitials, highScore);
 
-    if (asteroids.size() > 0) {
-        renderer.moveCamera(asteroids.front());
-    } else {
+//    if (asteroids.size() > 0) {
+//        renderer.moveCamera(asteroids.front());
+//    } else {
         renderer.moveCamera(flightController.getRotX(), flightController.getRotY(),
                 flightController.getRotZ(), flightController.getTranslate());
-    }
+//    }
 }
 
 void Game::mainLoop() {

@@ -21,7 +21,7 @@ private:
 
     void createObjects();
 
-    void updateObjects(Real now, Real lastMoveTime);
+    void updateObjects(const Real now, const Real lastMoveTime);
 
     void setupRenderer();
 

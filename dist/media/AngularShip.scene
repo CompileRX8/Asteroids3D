@@ -1,8 +1,8 @@
-<scene previous_export_time="1419958784.902741" formatVersion="1.0.1" export_time="1419958986.5587115" exported_by="ryan" >
+<scene previous_export_time="1419958708.7484396" formatVersion="1.0.1" export_time="1419961819.828522" exported_by="ryan" >
   <nodes >
     <node name="AngularShipBody" >
       <position x="0.000000" y="0.000000" z="-0.000000" />
-      <rotation qz="-1.000000" qx="0.000000" qy="0.000000" qw="-0.000001" />
+      <rotation qz="-0.000000" qx="0.000000" qy="0.000000" qw="1.000000" />
       <scale x="1.000000" y="1.000000" z="1.000000" />
       <game >
         <sensors />

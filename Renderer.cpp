@@ -1,6 +1,5 @@
 #include "common.h"
 #include "Renderer.hpp"
-#include "Asteroid.hpp"
 
 using namespace Ogre;
 
@@ -18,13 +17,14 @@ void Renderer::setup() {
     Application::setup(display);
 }
 
-void Renderer::resize(unsigned int w, unsigned int h) {
-    mWindow->resize(w, h);
+void Renderer::resize(const int w, const int h) {
+    mWindow->resize((const unsigned int) w, (const unsigned int) h);
     mCamera->setAspectRatio(Real(w) / Real(h));
 }
 
 void Renderer::createScene() {
     mCamera->setPosition(Vector3::ZERO);
+//    mCamera->setDirection(Vector3::UNIT_Z);
 
     mSceneMgr->setSkyBox(true, "Examples/SpaceSkyBox");
 
@@ -32,13 +32,15 @@ void Renderer::createScene() {
     mSceneMgr->setAmbientLight(ColourValue(0.25, 1.0, 0.25));
     mSceneMgr->setShadowTechnique(SHADOWTYPE_STENCIL_MODULATIVE);
 
-    SceneNode *shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ShipNode", Vector3(30.0, 30.0, 30.0));
+    SceneNode *shipNode = mSceneMgr->getRootSceneNode()->createChildSceneNode("ShipNode", Vector3(0.0, -15.0, 0.0));
 
     Entity *ship = mSceneMgr->createEntity("Ship", "AngularShipBody.mesh");
     ship->setCastShadows(true);
     ship->setMaterialName("Asteroids3D/Asteroid");
     shipNode->attachObject(ship);
     shipNode->setScale(1.5f, 1.5f, 1.5f);
+
+//    mCamera->lookAt(shipNode->getPosition());
 
     Overlay *scoreBarOverlay = OverlayManager::getSingleton().getByName("ScoreBarOverlay");
     if (scoreBarOverlay) {
@@ -50,7 +52,7 @@ void Renderer::moveCamera(const Radian &rot_x, const Radian &rot_y, const Radian
     mCamera->yaw(rot_x);
     mCamera->pitch(rot_y);
 //    mCamera->roll(rot_z);
-//    mCamera->moveRelative(translate);
+    mCamera->moveRelative(translate);
 }
 
 void Renderer::moveCamera(const std::unique_ptr<Asteroid> &aPtr) {
@@ -94,7 +96,7 @@ SceneNode *Renderer::getSceneNode(const std::unique_ptr<Asteroid> &aPtr) const {
 void Renderer::add(const std::unique_ptr<Asteroid> &aPtr) {
     std::string entityMesh, materialName;
 
-    Real scale = 1.0f;
+    Real scale;
     switch (aPtr->getSize()) {
         case Asteroid::Size::LARGE:
             scale = 0.3f;
@@ -144,8 +146,8 @@ void Renderer::destroy(const std::unique_ptr<Asteroid> &aPtr) {
 }
 
 void Renderer::animate(const Real now) {
-    const Real timeSinceStart = now - startTime;
-    const Real timeSinceLastRender = now - lastRenderTime;
+//    const Real timeSinceStart = now - startTime;
+//    const Real timeSinceLastRender = now - lastRenderTime;
 
     for (auto iter = std::begin(explosions); iter != std::end(explosions);) {
         ParticleSystem *explosionSystem = *iter;
