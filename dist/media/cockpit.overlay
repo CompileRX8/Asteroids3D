@@ -1,0 +1,30 @@
+ScoreBarOverlay
+{
+    zorder 200
+    container Panel(ScoreBarOverlay/ScoreBarPanel)
+    {
+        element TextArea(ScoreBarOverlay/HighScoreElement)
+        {
+            font_name       VectorBattle
+            char_height     0.045
+            top             0.005
+            left            0.5
+            width           0.33
+            height          0.05
+            alignment       center
+            colour          0 0.7 0 0.5
+        }
+
+        element TextArea(ScoreBarOverlay/ScoreElement)
+        {
+            font_name       VectorBattle
+            char_height     0.045
+            top             0.005
+            left            0.02
+            width           0.31
+            height          0.05
+            alignment       left
+            colour          0 0.7 0 0.5
+        }
+    }
+}

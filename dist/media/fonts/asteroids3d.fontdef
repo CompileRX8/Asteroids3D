@@ -1,0 +1,15 @@
+VectorBattle
+{
+    type truetype
+    source vector_battle.ttf
+    size 16
+    resolution 96
+}
+
+LiberationMonoBold
+{
+    type truetype
+    source LiberationMono-Bold.ttf
+    size 16
+    resolution 96
+}

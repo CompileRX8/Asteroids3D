@@ -1,0 +1,11 @@
+material Asteroids3D/Asteroid
+{
+    technique
+    {
+        pass
+        {
+            ambient 0 0.5 0 0.5
+            scene_blend colour_blend
+        }
+    }
+}
